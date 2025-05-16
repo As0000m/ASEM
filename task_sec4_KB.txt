@@ -1,0 +1,50 @@
+       CLIPS (6.30 3/17/15)
+CLIPS> //sec4//
+//sec4//
+CLIPS> //question1//
+//question1//
+CLIPS> (deftemplate individual
+   (slot hair-color))
+CLIPS> (defrule check_color
+   (individual (hair-color ?c&~black&~brown))
+   =>
+   (printout t "Hair color is: " ?c crlf))
+CLIPS> (assert (individual (hair-color red)))
+<Fact-1>
+CLIPS> (assert (individual (hair-color blonde)))
+<Fact-2>
+CLIPS> (assert (individual (hair-color black)))
+<Fact-3>
+CLIPS> (assert (individual (hair-color brown)))
+<Fact-4>
+CLIPS> (run)
+Hair color is: blonde
+Hair color is: red
+CLIPS> //question2//
+//question2//
+CLIPS>(deftemplate person
+   (multislot name 
+      (type SYMBOL STRING)
+      (cardinality 2 4))
+    (slot age 
+      (type INTEGER)
+      (range 20 25)))
+CLIPS> (assert (person (name "Sohir" "Ahmed") (age 22)))
+<Fact-1>
+CLIPS> (assert (person (name "Sohir") (age 22)))
+
+[CSTRNCHK1] Literal slot values found in the assert command
+does not satisfy the cardinality restrictions for slot name.
+CLIPS> (assert (person (name "Rana" "Ahmed") (age 19)))
+
+[CSTRNCHK1] A literal slot value found in the assert command
+does not fall in the allowed range 20 to 25 for slot age.
+CLIPS> (assert (person (name Ali Hassan Ahmed Omar) (age 25)))
+<Fact-2>
+CLIPS> (run)
+CLIPS> (facts)
+f-0     (initial-fact)
+f-1     (person (name "Sohir" "Ahmed") (age 22))
+f-2     (person (name Ali Hassan Ahmed Omar) (age 25))
+For a total of 3 facts.
+CLIPS> 
