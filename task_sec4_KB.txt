@@ -29,22 +29,22 @@ CLIPS>(deftemplate person
     (slot age 
       (type INTEGER)
       (range 20 25)))
-CLIPS> (assert (person (name "Sohir" "Ahmed") (age 22)))
+CLIPS> (assert (person (name "Asem" "Ashraf") (age 22)))
 <Fact-1>
-CLIPS> (assert (person (name "Sohir") (age 22)))
+CLIPS> (assert (person (name "Asem") (age 22)))
 
 [CSTRNCHK1] Literal slot values found in the assert command
 does not satisfy the cardinality restrictions for slot name.
-CLIPS> (assert (person (name "Rana" "Ahmed") (age 19)))
+CLIPS> (assert (person (name "Asem" "Ashraf") (age 19)))
 
 [CSTRNCHK1] A literal slot value found in the assert command
 does not fall in the allowed range 20 to 25 for slot age.
-CLIPS> (assert (person (name Ali Hassan Ahmed Omar) (age 25)))
+CLIPS> (assert (person (name Asem Ashraf Ahmed) (age 25)))
 <Fact-2>
 CLIPS> (run)
 CLIPS> (facts)
 f-0     (initial-fact)
-f-1     (person (name "Sohir" "Ahmed") (age 22))
+f-1     (person (name "Asem" "Ashraf") (age 22))
 f-2     (person (name Ali Hassan Ahmed Omar) (age 25))
 For a total of 3 facts.
 CLIPS> 
